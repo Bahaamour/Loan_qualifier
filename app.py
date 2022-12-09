@@ -112,6 +112,8 @@ def save_qualifying_loans(qualifying_loans):
     """
     #here, i'm saving the loan qualifiers
 
+    header = "Financial Institution", "Max Loan Amount", "Max Loan To Value", "Max Debt to Income Ratio", "Minumum Credit Score","APR Offered"
+
     if len(qualifying_loans) >= 1:
 
         save_file = questionary.confirm("Would you like to save the file to csv?").ask()
@@ -122,9 +124,12 @@ def save_qualifying_loans(qualifying_loans):
             file_location= questionary.text("Where would you like to save the file?").ask()
             csvpath =Path(file_location)
             print("Saving qualifing loan as csv file...")
+            
 
             with open(csvpath,"w",newline= "") as csvfile:
                 csvwriter= csv.writer(csvfile,delimiter =",")
+                csvwriter.writerow(header)
+
 
                 for row in qualifying_loans:
                     csvwriter.writerow(row)
