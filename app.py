@@ -7,6 +7,7 @@ Example:
     $ python app.py
 """
 import sys
+import csv
 import fire
 import questionary
 from pathlib import Path
@@ -32,6 +33,7 @@ def load_bank_data():
     """
 
     csvpath = questionary.text("Enter a file path to a rate-sheet (.csv):").ask()
+    # csvpath = "./data/daily_rate_sheet.csv"
     csvpath = Path(csvpath)
     if not csvpath.exists():
         sys.exit(f"Oops! Can't find this path: {csvpath}")
@@ -108,8 +110,33 @@ def save_qualifying_loans(qualifying_loans):
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
-    # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    #here, i'm saving the loan qualifiers
+
+    if len(qualifying_loans) >= 1:
+
+        save_file = questionary.confirm("Would you like to save the file to csv?").ask()
+
+        # here i'm asking the user if the want to save the file to csv
+
+        if save_file:
+            file_location= questionary.text("Where would you like to save the file?").ask()
+            csvpath =Path(file_location)
+            print("Saving qualifing loan as csv file...")
+
+            with open(csvpath,"w",newline= "") as csvfile:
+                csvwriter= csv.writer(csvfile,delimiter =",")
+
+                for row in qualifying_loans:
+                    csvwriter.writerow(row)
+# If the user chooses not to save file.
+        else:
+            sys.exit("Thank you for using the loan qualifier application.")
+
+    else:
+        sys.exit("You have no qualifing loans.")
+
+
+
 
 
 def run():
