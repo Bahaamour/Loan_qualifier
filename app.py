@@ -54,11 +54,7 @@ def get_applicant_info():
     loan_amount = float(questionary.text("What's your desired loan amount?").ask())
     home_value = float(questionary.text("What's your home value?").ask())
 
-    #credit_score = int(credit_score)
-    #debt = float(debt)
-   # income = float(income)
-    #loan_amount = float(loan_amount)
-    #home_value = float(home_value)
+    
 
     return credit_score, debt, income, loan_amount, home_value
 
@@ -109,7 +105,7 @@ def save_qualifying_loans(qualifying_loans):
         # here i'm asking the user if the want to save the file to csv
 
         if save_file:
-            file_location= questionary.text("Where would you like to save the file?").ask()
+            file_location= questionary.text("Where would you like to save the file? file should be in CSV format.").ask()
             csvpath =Path(file_location)
             print("Saving qualifing loan as csv file...")
             
