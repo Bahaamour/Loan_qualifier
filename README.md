@@ -12,6 +12,7 @@ User Story:
 Python libraries that are required for this program:
 
 `fire` (0.3.1)
+
 `questionary` (1.5.2)
 
 ---
