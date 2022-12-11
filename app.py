@@ -124,10 +124,11 @@ def save_qualifying_loans(qualifying_loans):
 
                 for row in qualifying_loans:
                     csvwriter.writerow(row)
-# If the user chooses not to save file.
+        # If the user chooses not to save file.
         else:
             sys.exit("Thank you for using the loan qualifier application.")
 
+    #If there are no qualifying loans the application with exit with a message
     else:
         sys.exit("You have no qualifing loans.")
 
