@@ -105,9 +105,16 @@ def save_qualifying_loans(qualifying_loans):
         # here i'm asking the user if the want to save the file to csv
 
         if save_file:
-            file_location= questionary.text("Where would you like to save the file? file should be in CSV format.").ask()
-            csvpath =Path(file_location)
-            print("Saving qualifing loan as csv file...")
+            # I am using a while statement in case the user saved the file in any format other than csv, it would give him an error
+            while True:
+                file_location= questionary.text("Where would you like to save the file?").ask()
+                if file_location [-3:] != "csv":
+                    print("ERROR! file should be in CSV format.")
+                
+                else:
+                    csvpath =Path(file_location)
+                    print("Saving qualifing loan as csv file...")
+                    break
             
 
             with open(csvpath,"w",newline= "") as csvfile:

@@ -40,9 +40,12 @@ The application wiull be pulling the input data from (daily_rate_sheet.csv) file
 
 Further, the application will ask the user to enter their details for the loan application such as, Credit Score, Debt, Income, Loan Value and property Value. Based on the input, the aplication wiull determine the eligible offers for the user. 
 
-If the user has eligible offers in the market, the application will ask the user if he would like to save the offers that the application pulled for him. If the user decided to save the offers, the user will be prompted to save the file as a csv. 
+If the user has eligible offers in the market, the application will ask the user if he would like to save the offers that the application pulled for him. If the user decided to save the offers, the user will be prompted to save the file as a csv. If the user saved the file in any other format, the application will print an error message saying "Error! file should be in csv format"
 
 ```python
+ 
+ header = "Financial Institution", "Max Loan Amount", "Max Loan To Value", "Max Debt to Income Ratio", "Minumum Credit Score","APR Offered"
+
 if len(qualifying_loans) >= 1:
 
         save_file = questionary.confirm("Would you like to save the file to csv?").ask()
@@ -50,9 +53,15 @@ if len(qualifying_loans) >= 1:
         # here i'm asking the user if the want to save the file to csv
 
         if save_file:
-            file_location= questionary.text("Where would you like to save the file? file should be in CSV format").ask()
-            csvpath =Path(file_location)
-            print("Saving qualifing loan as csv file...")
+            while True:
+                file_location= questionary.text("Where would you like to save the file?").ask()
+                if file_location [-3:] != "csv":
+                    print("ERROR! file should be in CSV format.")
+                
+                else:
+                    csvpath =Path(file_location)
+                    print("Saving qualifing loan as csv file...")
+                    break
             
 
             with open(csvpath,"w",newline= "") as csvfile:
