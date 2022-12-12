@@ -13,6 +13,7 @@ import questionary
 from pathlib import Path
 
 from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import save_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -23,6 +24,9 @@ from qualifier.filters.max_loan_size import filter_max_loan_size
 from qualifier.filters.credit_score import filter_credit_score
 from qualifier.filters.debt_to_income import filter_debt_to_income
 from qualifier.filters.loan_to_value import filter_loan_to_value
+
+
+
 
 
 def load_bank_data():
@@ -105,7 +109,7 @@ def save_qualifying_loans(qualifying_loans):
         # here i'm asking the user if the want to save the file to csv
 
         if save_file:
-            # I am using a while statement in case the user saved the file in any format other than csv, it would give him an error
+            # using a while statement in case the user saved the file in any format other than csv, it would give him an error
             while True:
                 file_location= questionary.text("Where would you like to save the file?").ask()
                 if file_location [-3:] != "csv":
@@ -116,14 +120,10 @@ def save_qualifying_loans(qualifying_loans):
                     print("Saving qualifing loan as csv file...")
                     break
             
+            """ Added a function from fileio.py to sace files into CSV. """
 
-            with open(csvpath,"w",newline= "") as csvfile:
-                csvwriter= csv.writer(csvfile,delimiter =",")
-                csvwriter.writerow(header)
-
-
-                for row in qualifying_loans:
-                    csvwriter.writerow(row)
+            save_csv(qualifying_loans,csvpath,header)
+            
         # If the user chooses not to save file.
         else:
             sys.exit("Thank you for using the loan qualifier application.")

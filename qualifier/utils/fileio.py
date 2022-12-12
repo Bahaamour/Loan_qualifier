@@ -28,3 +28,15 @@ def load_csv(csvpath):
         for row in csvreader:
             data.append(row)
     return data
+
+""" Modularized function to save CSV"""
+
+def save_csv(qualifying_loans,csvpath,header):
+
+    with open(csvpath,"w",newline= "") as csvfile:
+                csvwriter= csv.writer(csvfile,delimiter =",")
+                csvwriter.writerow(header)
+
+
+                for row in qualifying_loans:
+                    csvwriter.writerow(row)
