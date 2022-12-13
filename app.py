@@ -100,7 +100,7 @@ def save_qualifying_loans(qualifying_loans):
     """
     #here, i'm saving the loan qualifiers
 
-    header = "Financial Institution", "Max Loan Amount", "Max Loan To Value", "Max Debt to Income Ratio", "Minumum Credit Score","APR Offered"
+    #header = "Financial Institution", "Max Loan Amount", "Max Loan To Value", "Max Debt to Income Ratio", "Minumum Credit Score","APR Offered"
 
     if len(qualifying_loans) >= 1:
 
@@ -122,7 +122,7 @@ def save_qualifying_loans(qualifying_loans):
             
             """ Added a function from fileio.py to sace files into CSV. """
 
-            save_csv(qualifying_loans,csvpath,header)
+            save_csv(qualifying_loans,csvpath)
             
         # If the user chooses not to save file.
         else:

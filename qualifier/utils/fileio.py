@@ -31,7 +31,10 @@ def load_csv(csvpath):
 
 """ Modularized function to save CSV"""
 
-def save_csv(qualifying_loans,csvpath,header):
+def save_csv(qualifying_loans,csvpath):
+    
+    header = "Financial Institution", "Max Loan Amount", "Max Loan To Value", "Max Debt to Income Ratio", "Minumum Credit Score","APR Offered"
+
 
     with open(csvpath,"w",newline= "") as csvfile:
                 csvwriter= csv.writer(csvfile,delimiter =",")
