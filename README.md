@@ -1,4 +1,5 @@
 # Loan Qualifier Application
+![An image for the header of the Repository](/Users/bahaaamour/Desktop/Loan_qualifier/data/na-secured-vs-unsecured-personal-loans.jpg)
 
 Loan qualifier application aims to update the existing Loan Qualifier Application to allow the user to save the qualified loans to a CSV file.
 
