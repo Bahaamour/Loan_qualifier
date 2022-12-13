@@ -112,7 +112,7 @@ def save_qualifying_loans(qualifying_loans):
             # using a while statement in case the user saved the file in any format other than csv, it would give him an error
             while True:
                 file_location= questionary.text("Where would you like to save the file?").ask()
-                if file_location [-3:] != "csv":
+                if file_location [-4:] != ".csv":
                     print("ERROR! file should be in CSV format.")
                 
                 else:
