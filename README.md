@@ -1,5 +1,5 @@
 # Loan Qualifier Application
-![An image for the header of the Repository][./Loan_qualifier/data/loan_pic.png]
+![An image for the header of the Repository][./data/Loans_picture.png]
 
 Loan qualifier application aims to update the existing Loan Qualifier Application to allow the user to save the qualified loans to a CSV file.
 
